@@ -33,9 +33,26 @@ let personalMovieDB = {
     privat: false
 };
 
-let lastSeenFilm = prompt('Один из последних просмотренных фильмов?');
-let lastSeenFilmRank = prompt('На сколько оцените его?');
+for(let i = 0;i < 4; i++){
+    let lastSeenFilm = prompt('Один из последних просмотренных фильмов?');
+    let lastSeenFilmRank = prompt('На сколько оцените его?');
 
-personalMovieDB.movies[lastSeenFilm] = lastSeenFilmRank;
+    while(lastSeenFilm.length > 50 || lastSeenFilm == '' || lastSeenFilmRank == '' || lastSeenFilm === null || !lastSeenFilmRank === null){
+        lastSeenFilm = prompt('Один из последних просмотренных фильмов?');
+        lastSeenFilmRank = prompt('На сколько оцените его?');
+    }
+    
+    personalMovieDB.movies[lastSeenFilm] = lastSeenFilmRank;
+}
+
+if(personalMovieDB.count < 10){
+    console.log('Просмотрено довольно мало фильмов');
+}
+if(personalMovieDB.count >=10 && personalMovieDB.count <= 30){
+    console.log('Вы классический зритель');
+}
+if(personalMovieDB.count > 30){
+    console.log('Вы киноман');
+}
 
 console.log(personalMovieDB);
